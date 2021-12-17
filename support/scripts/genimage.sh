@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh -x
 
 die() {
   cat <<EOF >&2

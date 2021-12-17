@@ -117,6 +117,7 @@ CAIRO_CONF_OPTS += --enable-xlib --enable-xcb --with-x
 CAIRO_DEPENDENCIES += xlib_libX11 xlib_libXext
 else
 CAIRO_CONF_OPTS += --disable-xlib --disable-xcb --without-x
+CAIRO_CONF_ENV += CPPFLAGS="$(TARGET_CPPFLAGS) -DEGL_NO_X11"
 endif
 
 ifeq ($(BR2_PACKAGE_XLIB_LIBXRENDER),y)
