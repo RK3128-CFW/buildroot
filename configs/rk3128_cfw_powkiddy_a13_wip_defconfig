@@ -483,10 +483,10 @@ BR2_GENERATE_LOCALE=""
 # BR2_TARGET_TZ_INFO is not set
 BR2_ROOTFS_USERS_TABLES=""
 BR2_ROOTFS_OVERLAY="board/rk3128-cfw/common/rootfs_overlay"
-BR2_ROOTFS_POST_BUILD_SCRIPT="board/rk3128-cfw/common/post-build.sh"
+BR2_ROOTFS_POST_BUILD_SCRIPT="board/rk3128-cfw/powkiddy/a13/post-build.sh"
 BR2_ROOTFS_POST_FAKEROOT_SCRIPT=""
 BR2_ROOTFS_POST_IMAGE_SCRIPT="support/scripts/genimage.sh"
-BR2_ROOTFS_POST_SCRIPT_ARGS="-c board/rk3128-cfw/wx8/ps5000/genimage.cfg"
+BR2_ROOTFS_POST_SCRIPT_ARGS="-c board/rk3128-cfw/powkiddy/a13/genimage.cfg"
 
 #
 # Kernel
