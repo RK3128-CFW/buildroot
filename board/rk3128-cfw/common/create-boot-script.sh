@@ -15,5 +15,6 @@ cp "${BINARIES_DIR}/rootfs.squashfs"    "${BINARIES_DIR}/boot/batocera"        |
 
 cp "${BINARIES_DIR}/rk3128-wx8.dtb"     "${BINARIES_DIR}/boot/"     || exit 1
 cp "${BOARD_DIR}/boot/extlinux.conf"    "${BINARIES_DIR}/extlinux/" || exit 1
+cp "${BOARD_DIR}/batocera-boot.conf"    "${BINARIES_DIR}/"          || exit 1
 
 exit 0
