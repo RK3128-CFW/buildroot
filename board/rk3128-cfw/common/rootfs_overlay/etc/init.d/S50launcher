@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# Start linux launcher...
+#
+
+case "$1" in
+  start)
+		printf "Starting retroarch: "
+
+		#for wayland
+		mkdir -p /tmp/.xdg &&  chmod 0700 /tmp/.xdg
+		export XDG_RUNTIME_DIR=/tmp/.xdg
+		export HOME=/userdata/system
+		weston --tty=2 --idle-time=0 --config=/etc/xdg/weston/weston.ini &
+		sleep 1
+		retroarch -c /userdata/system/.config/retroarch/retroarch.cfg &
+	;;
+  stop)
+		killall retroarch
+		printf "stop retroarch finished"
+        ;;
+  *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac
+exit 0
