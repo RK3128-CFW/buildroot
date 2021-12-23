@@ -1,0 +1,5 @@
+[D-BUS Service]
+Name=fi.w1.wpa_supplicant1
+Exec=/usr/sbin/wpa_supplicant -B w -D wext -i wlan0 -c /boot/wpa-supplicant.conf
+User=root
+SystemdService=wpa_supplicant.service

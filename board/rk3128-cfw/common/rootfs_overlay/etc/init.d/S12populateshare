@@ -11,6 +11,7 @@ OUT=/userdata
 for DIR in cheats \
            system/.cache \
            system/.config/lirc \
+           system/.config/retroarch \
            system/bluetooth \
            system/configs \
            system/pacman \
@@ -36,6 +37,7 @@ for FILE in music bios extractions kodi library saves screenshots splash \
             system/.config/lirc/lircd.conf \
             system/configs/emulationstation/es_input.cfg \
             system/configs/emulationstation/es_settings.cfg \
+            system/.config/retroarch/retroarch.cfg \
             system/.kodi \
             system/configs/amiberry \
             system/configs/cannonball \
