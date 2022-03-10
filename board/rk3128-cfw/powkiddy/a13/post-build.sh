@@ -17,7 +17,9 @@ $UBOOT_DIR/tools/loaderimage --pack --trustos $IMAGES_DIR/rkbin/bin/rk31/rk3126_
 
 # Populate the boot partition
 board/rk3128-cfw/powkiddy/a13/create-boot-script.sh $BOARD_DIR $IMAGES_DIR 
-install -m 0644 -D $BOARD_DIR/extlinux.conf $TARGET_DIR/boot/extlinux/extlinux.conf
+install -m 0644 -D $BOARD_DIR/boot/extlinux.conf $TARGET_DIR/boot/extlinux/extlinux.conf
+install -m 0644 -D board/rk3128-cfw/common/wpa-supplicant.conf $IMAGES_DIR/wpa-supplicant.conf
+install -m 0644 -D ../package/batocera/core/batocera-system/batocera-boot.conf $IMAGES_DIR/batocera-boot.conf
 
 # Create overlay for 
 if [ ! -d $TARGET_DIR/overlay ]; then
