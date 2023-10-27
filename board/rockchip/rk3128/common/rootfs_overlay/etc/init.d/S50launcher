@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# Start linux launcher...
+#
+
+case "$1" in
+  start)
+		printf "Starting retroarch: "
+
+		mount /dev/mmcblk0p2 /userdata
+
+		mkdir -p /tmp/.xdg &&  chmod 0700 /tmp/.xdg
+		export XDG_RUNTIME_DIR=/tmp/.xdg
+		export HOME=/userdata/system
+		retroarch -c /userdata/system/.config/retroarch/retroarch.cfg &
+	;;
+  stop)
+		killall retroarch
+		printf "stop retroarch finished"
+        ;;
+  *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac
+exit 0
