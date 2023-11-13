@@ -1,0 +1,60 @@
+#!/bin/sh
+
+# Check for external partitions first, try to mount the last one from 4 to 1
+echo "External /dev/mmcblk0p3 partition exists, mounting..."
+mount /dev/mmcblk0p3 /userdata
+DRIVE="external"
+
+# Create /userdata/system if it does not exist
+mkdir -p /userdata/system
+mkdir -p /userdata/system/logs
+
+# Copy system configs
+if [ ! -d "/userdata/system/configs" ]; then
+	mkdir -p /userdata/system/configs
+	cp -r /usr/share/batocera/datainit/system/configs /userdata/system/
+fi
+
+# Populate /userdata/system
+if [ ! -d "/userdata/system/.simplemenu" ]; then
+	dialog --backtitle "KORIKI M17" --title " Copying content to /userdata " \
+           --infobox "Please wait..." 10 30 &>/dev/tty1
+	# Added -L to copy links as files in FAT32
+	cp -rL /usr/share/simplemenu/.simplemenu /userdata/system/
+fi
+
+# Populate Koriki Apps
+if [ ! -d "/userdata/system/App" ]; then
+	cp -r /usr/share/simplemenu/App /userdata/system/
+fi
+
+# Populate Koriki
+if [ ! -d "/userdata/system/Koriki" ]; then
+	cp -r /usr/share/simplemenu/Koriki /userdata/system/
+fi
+
+# Populate retroarch and flycast configs
+if [ ! -d "/userdata/system/.config" ]; then
+	cp -r /usr/share/simplemenu/.config /userdata/system/
+	cp -r /usr/share/flycast /userdata/system/.config/
+fi
+
+if [ ! -d "/userdata/system/configs" ]; then
+	mkdir -p /userdata/system/configs
+	#cp -r /usr/share/batocera/datainit/system/configs /userdata/system/
+	cp -r /usr/share/configs /userdata/system/
+fi
+
+# Add roms folders if missing
+if [ ! -d "/userdata/roms" ]; then
+	mkdir -p /userdata/roms
+	#cp -r /usr/share/batocera/datainit/roms /userdata/
+	cp -r /usr/share/simplemenu/roms /userdata/
+fi
+
+# Add bios folder if missing
+if [ ! -d "/userdata/bios" ]; then
+	mkdir /userdata/bios
+	cp -r /usr/share/batocera/datainit/bios /userdata/
+fi
+
