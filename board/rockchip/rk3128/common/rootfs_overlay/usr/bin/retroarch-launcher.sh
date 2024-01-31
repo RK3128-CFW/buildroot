@@ -26,18 +26,11 @@ export HOME=/userdata/system
 
 CUSTOM_LAUNCHER_FILE="/boot/customlauncher"
 
-LAUNCHER="simplemenu"
+LAUNCHER="emulationstation"
 
 if [ -f "${CUSTOM_LAUNCHER_FILE}" ]; then
     # Read the content of the file
-    CONTENT=$(cat "${CUSTOM_LAUNCHER_FILE}")
-    
-    # Determine the launcher based on the content
-    if [ "${CONTENT}" = "retroarch" ]; then
-        LAUNCHER="retroarch"
-    elif [ "${CONTENT}" = "emulationstation" ]; then
-        LAUNCHER="emulationstation"
-    fi
+    LAUNCHER=$(cat "${CUSTOM_LAUNCHER_FILE}")
 fi
 
 GAMELAUNCH=1
@@ -46,10 +39,10 @@ do
     if test "$LAUNCHER" = "retroarch"
     then
 	cd $HOME
-        retroarch --verbose
+        taskset 8 retroarch --verbose
     else
 	cd $HOME
-	$LAUNCHER
+	taskset 8 $LAUNCHER
     fi
     GAMELAUNCH=0
 done

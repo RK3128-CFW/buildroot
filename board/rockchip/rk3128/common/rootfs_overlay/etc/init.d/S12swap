@@ -1,0 +1,13 @@
+#!/bin/sh
+
+
+
+
+echo noop > /sys/devices/platform/10214000.dwmmc/mmc_host/mmc0/mmc0:5048/block/mmcblk0/queue/scheduler
+echo on > /sys/devices/platform/10214000.dwmmc/mmc_host/mmc0/power/control 
+
+echo "10 10" > /proc/sys/vm/lowmem_reserve_ratio
+
+echo 100 > /proc/sys/vm/swappiness
+
+

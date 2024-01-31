@@ -23,6 +23,11 @@ if [ ! -d "/userdata/system/.simplemenu" ]; then
 	cp -rL /usr/share/simplemenu/.simplemenu /userdata/system/
 fi
 
+# Populate simplermenu+ 
+if [ ! -d "/userdata/system/simplermenu_plus" ]; then
+	cp -r /usr/share/simplermenu_plus /userdata/system/
+fi
+
 # Populate Koriki Apps
 if [ ! -d "/userdata/system/App" ]; then
 	cp -r /usr/share/simplemenu/App /userdata/system/
